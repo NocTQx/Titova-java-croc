@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
 
         String[] arr = in.nextLine().split(" ");
-        int min , max, imax = 0, imin = 0,  len = arr.length;
+        int min, max, imax = 0, imin = 0, len = arr.length;
         int[] ans = new int[len];
 
-        for (int i = 0; i < len; i++){
+        for (int i = 0; i < len; i++) {
             ans[i] = Integer.parseInt(arr[i]);
         }
         min = ans[0];
@@ -27,25 +27,15 @@ public class Main {
                 min = ans[i];
             }
         }
-
-        int[] res = new int [len];
-
-        for (int i = 0; i < len-1; i++){
-                if (i == imin) {
-                    res[i] = ans[0];
-                    res[0] = min;
-                }
-                else if (i == imax) {
-                    res[i] = ans[len-1];
-                    res[len-1] = max;
-                }
-                else {
-                    res[i] = ans[i];
-            }
+        if (imin != 0){
+            ans[imin] = ans[0];
+            ans[imax] = ans[len - 1];
+            ans[0] = min;
+            ans[len-1] = max;
         }
 
         for (int i = 0; i < len;  i++) {
-            System.out.print(res[i] + " ");
+            System.out.print(ans[i] + " ");
         }
     }
 }
