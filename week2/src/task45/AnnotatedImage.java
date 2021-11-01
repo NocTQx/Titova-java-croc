@@ -20,9 +20,7 @@ public class AnnotatedImage {
 
     public Annotation findByPoint(int x, int y) {
         for (Annotation annotation : this.annotations) {
-            if ((annotation.getElem().x0 == x && annotation.getElem().y0 == y) ||
-                    (Objects.equals(annotation.getElem().type, "R") &&
-                            annotation.getElem().x1 == x && annotation.getElem().y1 == y)) {
+            if (annotation.getElem().pointInside(x, y)){
                 return annotation;
             }
         }
@@ -37,4 +35,6 @@ public class AnnotatedImage {
         }
         return null;
     }
+
+
 }

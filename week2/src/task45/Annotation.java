@@ -17,12 +17,8 @@ public class Annotation {
         return this.label;
     }
 
-    public String toString() {
-        if (elem.type.equals("C"))
-            return "C (" + elem.x0 + ", " + elem.y0 + "), " + elem.r + ": " + label;
-        else
-            return "R (" + elem.x0 + ", " + elem.y0 + "), (" + elem.x1 + ", " + elem.y1 + ")" + ": " + label;
+    public String toString(){
+        return this.getElem().toString() + label;
     }
-
 
 }

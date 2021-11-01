@@ -24,7 +24,6 @@ public class Main {
             System.out.println(img.findByLabel("здесь"));
             System.out.println(img.findByLabel("и"));
 
-
             System.out.println(img.getImagePath());
             System.out.println(img.getAnnotations()[0]);
             System.out.println(img.getAnnotations()[1]);
