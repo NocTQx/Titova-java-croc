@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class Main {
     public static String removeJavaComments(String input){
         // регулярное выражение вида /* ... */ или // ... /n
-        final String regular = "(([\\/][\\*]([\\s\\S]*?)[\\*][\\/])|([\\/]{2}(.*)[^\\n]))(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
+        final String regular = "(?=([^\"]*\"[^\"]*\")*[^\"]*$)(([\\/][\\*]([\\s\\S]*?)[\\*][\\/])|([\\/]{2}(.*)[^\\n]))";
 
         Pattern pattern = Pattern.compile(regular);
         Matcher matcher = pattern.matcher(input);
