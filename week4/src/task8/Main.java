@@ -1,3 +1,5 @@
+package task8;
+
 import java.io.*;
 // Программа делалась на убунте, поэтому кодировка utf-8!
 public class Main {
