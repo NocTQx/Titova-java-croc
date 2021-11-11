@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.*;
 
-import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
 
 public class ManipulatesWithFiles {
 
@@ -34,7 +34,7 @@ public class ManipulatesWithFiles {
         String line;
         while ((line = r.readLine()) != null){
             String[] line_split = line.split(" ", 2);
-            map.put(parseInt(line_split[0]), line_split[1]); // представляем данные из файла в виде ключ + значение построчно
+            map.put(parseLong(line_split[0]), line_split[1]); // представляем данные из файла в виде ключ + значение построчно
         }
         TreeMap treeMap = new TreeMap(map); // ключ + значение в отсортированном порядке
         Set set = treeMap.entrySet();
