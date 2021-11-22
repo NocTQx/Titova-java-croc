@@ -78,12 +78,11 @@ public interface AnalizeAndCreate {
         int numUserFilms = userWatchList.size();
 
         for (int i = 0; i < usersList.size(); i++) {
-            Integer[] user = usersList.get(i + 1);
+            Integer[] user = usersList.get(i + 1);  // список фильмов юзера под номером i+1
             for (int k = 0; k < user.length; k++)  // считаем сколько фильмов совпало
                 if (userWatchList.containsKey(user[k]))
                     count++;
-
-            if (count >= numUserFilms / 2) {  // если больше половины совпало
+            if (count * 2 >= numUserFilms) {  // если больше половины совпало
                 for (int k = 0; k < user.length; k++) {
                     if (!userWatchList.containsKey(user[k]))  // для всех несовпавших добавляем их в список всех рекомендованных фильмов
                         curList.put(user[k], true);
@@ -91,6 +90,7 @@ public interface AnalizeAndCreate {
             }
             count = 0;  // счетчик совпавших фильмов
         }
+        // количество просмотров по всем пользователям
         if (curList.containsValue(true)){
         List<Integer> randomBox = new ArrayList<>(); // номер фильма с максимальным количеством просмотров
         int max = 0;  // максимальное количество просмотров
@@ -114,6 +114,6 @@ public interface AnalizeAndCreate {
 
         return films.get(recommendation);
     }
-        else return "Sorry, we have no more films for watch";
+        else return "Sorry, we have no films for watching";
     }
 }
