@@ -22,6 +22,7 @@ public class Main {
         comments.add("Проверка? знаков препинания");
         comments.add("Проверка: знаков препинания");
         comments.add("Это ПлОхОй коммент с разными регистрами");
+        comments.add("Комментарий ПРОВЕРКА");
 
         Set<String> blackList = new HashSet<>();  // Запрещенные слова
         blackList.add("плохой");
