@@ -13,7 +13,7 @@ public class Main {
         comments.add("Коммент номер один");
         comments.add("Коммент номер два");
         comments.add("Не важно");
-        comments.add("Проверка \n проверяет");
+        comments.add("Провер \n проверяет проверка");
         comments.add("Этот коммент хороший");
         comments.add("А этот коммент плохой");
         comments.add("Коммент очень плохой");
@@ -21,14 +21,14 @@ public class Main {
         comments.add("Проверка! знаков препинания 2");
         comments.add("Проверка? знаков препинания");
         comments.add("Проверка: знаков препинания");
-        comments.add("знаков препинания");
+        comments.add("Это ПлОхОй коммент с разными регистрами");
 
         Set<String> blackList = new HashSet<>();  // Запрещенные слова
         blackList.add("плохой");
-        blackList.add("Проверка");
+        blackList.add("проверка");
         blackList.add("важно");
 
-        BlackListFilter.filterComments(comments, blackList);
+        new RealizeBlackListFilter().filterComments(comments, blackList);
         System.out.println(comments);
     }
 }
