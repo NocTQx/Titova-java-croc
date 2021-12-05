@@ -23,8 +23,5 @@ public class Main {
 
         System.out.println("Аукцион окончен \n" + "ПОБЕДИТЕЛЬ:" + Lot.getWinnerName());
 
-
-
-
     }
 }
