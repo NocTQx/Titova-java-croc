@@ -29,7 +29,7 @@ public class Order {
     public static Order createOrder(String userLogin, String[] products) throws SQLException {
         String sql = "";
         int max = 0;
-        String sqlFindMAX = "SELECT MAX(id) FROM SHOP_LIST";
+        String sqlFindMAX = "SELECT MAX(id) FROM SHOP_LIST"; // узнать максимальный номер заказа, новый на 1 больше
         ResultSet rs = statement.executeQuery(sqlFindMAX);
 
         while (rs.next()) {

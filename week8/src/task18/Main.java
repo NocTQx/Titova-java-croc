@@ -16,7 +16,7 @@ public class Main {
     public static Connection connection = null;
     public static Statement statement = null;
 
-    public static int app() throws SQLException {
+    public static int app() throws SQLException {  // выбор действия в зависимости от команды пользователя
 
         Scanner sc = new Scanner(in);
         String[] s = sc.nextLine().split(" ");
@@ -46,7 +46,7 @@ public class Main {
         return 1;
     }
 
-    public static void printTable() throws SQLException {
+    public static void printTable() throws SQLException {   // вывод обеих таблиц (для отладки)
         ResultSet rs = statement.executeQuery("SELECT * FROM STUFF;");
         int columns = rs.getMetaData().getColumnCount();
         while (rs.next())
@@ -68,11 +68,11 @@ public class Main {
         connection = DriverManager.getConnection(connUrl, "sa", "");
         statement = connection.createStatement();
 
-        statement.executeUpdate("DROP TABLE IF EXISTS STUFF;\n" +
+        statement.executeUpdate("DROP TABLE IF EXISTS STUFF;\n" + // удаление предыдущих таблиц из базы
                 "DROP TABLE IF EXISTS SHOP_LIST;");
 
-        String sql = "CREATE TABLE STUFF (item_name VARCHAR(255) not NULL, price INTEGER not NULL, stuff_id VARCHAR(255) PRIMARY KEY);";
-        sql += "\n CREATE TABLE SHOP_LIST (id INTEGER not NULL, login VARCHAR(255) not NULL, article VARCHAR(255) REFERENCES STUFF(stuff_id));";
+        String sql = "CREATE TABLE STUFF (item_name VARCHAR(255) not NULL, price INTEGER not NULL, stuff_id VARCHAR(255) PRIMARY KEY);"; // создание таблицы с товарами
+        sql += "\n CREATE TABLE SHOP_LIST (id INTEGER not NULL, login VARCHAR(255) not NULL, article VARCHAR(255) REFERENCES STUFF(stuff_id));";  // создание таблицы с заказами
 
         statement.executeUpdate(sql);
 
@@ -81,7 +81,7 @@ public class Main {
         while ((line = r.readLine()) != null) {
             String[] arrStr = line.split("[,\"]");
 
-            String insertSql = "MERGE INTO STUFF USING (SELECT '" + arrStr[3] + "' STUFF_ID) AS S ON STUFF.STUFF_ID = S.STUFF_ID" +
+            String insertSql = "MERGE INTO STUFF USING (SELECT '" + arrStr[3] + "' STUFF_ID) AS S ON STUFF.STUFF_ID = S.STUFF_ID" + //вставка значений
                     " WHEN NOT MATCHED THEN INSERT VALUES ('" + arrStr[4] + "', " + arrStr[5] + ", '" + arrStr[3] + "');";
             insertSql += "\n INSERT INTO SHOP_LIST VALUES (" + arrStr[1] + ", '" + arrStr[2] + "', '" + arrStr[3] + "');\n";
 
@@ -94,7 +94,7 @@ public class Main {
             System.out.println("ЗАКАЗ <логин_пользователя> <артикул товара_1>[, <артикул_товара_N>]");
             System.out.println("Для завершения введите КОНЕЦ");
             try {
-               while (app() != 0){}
+               while (app() != 0){}  // цикл для взаимодействия с приложением
                 printTable();
 
             } catch (SQLException e){

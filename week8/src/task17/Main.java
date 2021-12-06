@@ -2,21 +2,35 @@ package task17;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 
 public class Main {
 
 
     static final String driver = "org.h2.Driver";
     static final String connUrl = "jdbc:h2:~/test";
+    public static Connection connection = null;
+    public static Statement statement = null;
+
+    public static void printTable() throws SQLException {   // вывод обеих таблиц (для отладки)
+        ResultSet rs = statement.executeQuery("SELECT * FROM STUFF;");
+        int columns = rs.getMetaData().getColumnCount();
+        while (rs.next())
+            for (int i = 1; i <= columns; i++){
+                System.out.print(rs.getString(i) + " ");
+            }
+        System.out.println("\n");
+        ResultSet rs2 = statement.executeQuery("SELECT * FROM SHOP_LIST;");
+        int col = rs2.getMetaData().getColumnCount();
+        while (rs2.next())
+            for (int i = 1; i <= col; i++){
+                System.out.print(rs2.getString(i) + " ");
+            }
+        System.out.println("\n");
+    }
 
     public static void main(String[] args){
-
-        Connection connection = null;
-        Statement statement = null;
 
         try {
             Class.forName(driver);
@@ -41,6 +55,7 @@ public class Main {
 
                 statement.executeUpdate(insertSql);
             }
+            printTable();
             statement.close();
             connection.close();
         } catch (SQLException se){
@@ -58,5 +73,6 @@ public class Main {
                 se.printStackTrace();
             }
         }
+
         }
     }
