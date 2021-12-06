@@ -1,5 +1,8 @@
 package task18;
 
+import org.h2.tools.SimpleResultSet;
+
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ListIterator;
@@ -23,12 +26,19 @@ public class Order {
         return customerName;
     }
 
-    public static Order createOrder(String userLogin, List<Product> products) throws SQLException {
+    public static Order createOrder(String userLogin, String[] products) throws SQLException {
         String sql = "";
-        ListIterator <Product> iterator = products.listIterator();
-        while (iterator.hasNext()){
-            Order order = new Order(userLogin, iterator.next().getArticleNum());
-            sql += "INSERT INTO SHOP_LIST VALUES('" + order.getCustomerName() + "', '" + order.getArticleNum() + "');";
+        int max = 0;
+        String sqlFindMAX = "SELECT MAX(id) FROM SHOP_LIST";
+        ResultSet rs = statement.executeQuery(sqlFindMAX);
+
+        while (rs.next()) {
+            max = rs.getInt(1);
+        }
+        max+=1;
+
+        for(String S : products){
+            sql += "INSERT INTO SHOP_LIST VALUES(" + max + ",'" + userLogin + "', '" + S + "'); \n";
         }
         statement.executeUpdate(sql);
         return null;

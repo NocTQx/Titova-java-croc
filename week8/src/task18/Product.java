@@ -10,6 +10,10 @@ public class Product {
     private static int productPrice;
     private static String articleNum;
 
+    public Product (){
+
+    }
+
     public Product(String productName, int productPrice, String articleNum){
         this.productName = productName;
         this.productPrice = productPrice;
@@ -29,47 +33,48 @@ public class Product {
     }
 
     public static Product findProduct(String productCode) throws SQLException{
-        String[] s = new String[0];
-        String sql = "SELECT * FROM STUFF WHERE'" + productCode + "' IN stuff_id";
-        if (statement.executeUpdate(sql) == 0) return null;
+
+        String sql = "SELECT * FROM STUFF WHERE STUFF_ID = '" + productCode + "';";
         ResultSet rs = statement.executeQuery(sql);
-        int columns = rs.getMetaData().getColumnCount();
-        while (rs.next()){
-            for (int i = 1; i <= columns; i++)
-                s[i-1] = (rs.getString(i));
-        }
-        Product pr = new Product(s[0],Integer.parseInt(s[1]),productCode);
-        if (rs != null) rs.close();
+        if (!rs.next()) return null;
+        Product pr = new Product();
+
         return pr;
     }
 
     Product createProduct(Product product) throws SQLException {
-        String article = product.getArticleNum();
+        String article = getArticleNum();
         String sql;
         if (findProduct(article) == null){
-            sql = "INSERT INTO STUFF VALUES ('" + product.getProductName() + "', " +
-                    product.getProductPrice() + ", '" + product.getArticleNum() + "');";
+            sql = "INSERT INTO STUFF VALUES ('" + getProductName() + "', " +
+                    getProductPrice() + ", '" + getArticleNum() + "');";
             statement.executeUpdate(sql);
             return product;
         }
-        throw new SQLException("Продукт уже существует");
+        else throw new SQLException("Продукт уже существует");
     }
 
-    Product updateProduct(Product product) throws SQLException {
-        String article = product.getArticleNum();
+    Product updateProduct(Product productChange) throws SQLException {
+        String article = productChange.getArticleNum();
         String sql;
         if (findProduct(article) != null){
-            sql = "UPDATE STUFF SET item_name = '" + product.getProductName() + "', price = " + product.getProductPrice() +
-            "\n WHERE stuff_id = '" +  product.getArticleNum() + "';";
+
+            sql = "UPDATE STUFF SET item_name = '" + productChange.getProductName() + "', price = " + productChange.getProductPrice() +
+            "\n WHERE stuff_id = '" +  productChange.getArticleNum() + "';";
             statement.executeUpdate(sql);
-            return product;
+            return productChange;
         }
         throw new SQLException("Продукт не существует");
     }
 
     void deleteProduct(String productCode) throws SQLException {
+
         String sql;
-        sql = "DELETE * FROM SHOP_LIST WHERE '" + productCode + "'";
-        statement.executeUpdate(sql);
+        if (findProduct(productCode) != null){
+            sql = "DELETE FROM SHOP_LIST WHERE ARTICLE = '" + productCode + "'; \n";
+            sql += "DELETE FROM STUFF WHERE STUFF_ID = '" + productCode + "';";
+            statement.executeUpdate(sql);
+        }
+        else throw new SQLException("Продукт не существует");
     }
 }
