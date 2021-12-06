@@ -25,9 +25,8 @@ public class Main {
             statement.executeUpdate("DROP TABLE IF EXISTS STUFF;\n" +
                     "DROP TABLE IF EXISTS SHOP_LIST;");
 
-
-            String sql = "CREATE TABLE SHOP_LIST (id INTEGER not NULL, login VARCHAR(255) not NULL, article VARCHAR(255) PRIMARY KEY);";
-            sql += "\nCREATE TABLE STUFF (item_name VARCHAR(255) not NULL, price INTEGER not NULL, stuff_id VARCHAR(255), foreign key (stuff_id) references SHOP_LIST(article));";
+            String sql = "CREATE TABLE STUFF (item_name VARCHAR(255) not NULL, price INTEGER not NULL, stuff_id VARCHAR(255) PRIMARY KEY);";
+            sql += "\n CREATE TABLE SHOP_LIST (id INTEGER not NULL, login VARCHAR(255) not NULL, article VARCHAR(255) REFERENCES STUFF(stuff_id));";
 
             statement.executeUpdate(sql);
 
@@ -36,9 +35,9 @@ public class Main {
             while ((line = r.readLine()) != null) {
                 String[] arrStr = line.split("[,\"]");
 
-                String insertSql = "INSERT INTO SHOP_LIST VALUES (" + arrStr[1] + ", '" + arrStr[2] + "', '" + arrStr[3] + "');\n";
-                insertSql += "IF NOT EXISTS (SELECT * FROM shop_list s WHERE s.article = '" + arrStr[3] + "') BEGIN INSERT INTO STUFF VALUES ('" + arrStr[4] + "', " + arrStr[5] + ", '" + arrStr[3] + "') END";
-
+                String insertSql = "MERGE INTO STUFF USING (SELECT '" + arrStr[3] + "' STUFF_ID) AS S ON STUFF.STUFF_ID = S.STUFF_ID" +
+                        " WHEN NOT MATCHED THEN INSERT VALUES ('" + arrStr[4] + "', " + arrStr[5] + ", '" + arrStr[3] + "');";
+                insertSql += "\n INSERT INTO SHOP_LIST VALUES (" + arrStr[1] + ", '" + arrStr[2] + "', '" + arrStr[3] + "');\n";
 
                 statement.executeUpdate(insertSql);
             }
