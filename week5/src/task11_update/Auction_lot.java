@@ -3,6 +3,8 @@ package task11_update;
 import java.util.Date;
 import java.util.Random;
 
+import static task11_update.Main.appThreads;
+
 public class Auction_lot implements Runnable{
     volatile private int currentCost;  // текущая цена
     volatile private String theMostSuccessfulUser;  // имя текущего победителя
@@ -11,6 +13,7 @@ public class Auction_lot implements Runnable{
     final Random rand = new Random();
 
     public Auction_lot(Date endTime, String usr) {
+
         this.endTime = endTime;
         this.usr = usr;
     }
@@ -34,7 +37,10 @@ public class Auction_lot implements Runnable{
     
     @Override
     public void run() {
-            while (true)
-                    NewCost(currentCost + rand.nextInt(20),this.usr);
+            while (TimeCheck()){
+                NewCost(currentCost + rand.nextInt(20),this.usr);
+            }
+            for (Thread thread : appThreads)
+                thread.interrupt();
     }
 }
