@@ -2,6 +2,21 @@ package task16;
 
 import java.util.*;
 
+class StringComparator implements Comparator<String>
+{
+    @Override
+    public int compare(String s1, String s2)
+    {
+        int value1 = Integer.parseInt(s1.replaceAll("[^0-9]", ""));
+        int value2 = Integer.parseInt(s2.replaceAll("[^0-9]", ""));
+        if (value1 < value2) return 1;
+        if (value1 == value2){
+            return s1.compareTo(s2);
+        }
+        return -1;
+    }
+}
+
 public class Main {
     // создаем группы исходя из указанной последовательности
     private static String generateKey(Integer[] groups, int numGroup){
@@ -43,8 +58,9 @@ public class Main {
             groups[i] = Integer.parseInt(inpt[i]);
 
         for (int i = numGroups; i >= 0; i--){
-            peoples.put(generateKey(groups, i), new TreeSet<>());  // создаем основу с ключами-группами
+            peoples.put(generateKey(groups, i), new TreeSet<>(new StringComparator()));  // создаем основу с ключами-группами
         }
+
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 String s = scanner.nextLine();
@@ -52,8 +68,9 @@ public class Main {
                     break;
                 }
                 String[] input = s.split(",");
+                Person person = new Person(input[0], Integer.parseInt(input[1]));
                 // добавляем в нужную группу полученные имя и возраст
-                peoples.get(groupChoice(groups, Integer.parseInt(input[1]))).add(generateValue(input[0], input[1]));
+                peoples.get(groupChoice(groups, person.getAge())).add(generateValue(person.getName(), person.getAge().toString()));
             }
         }
 

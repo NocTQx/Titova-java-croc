@@ -11,7 +11,7 @@ public class PasswordRunnable extends Thread {
     public final int alpaLen = 26;
     public final int variants = (int)Math.pow(alpaLen, 7);
 
-    private boolean isComplete = true;
+    private volatile boolean isComplete = true;
     private static final char[] alpha = "abcdefghijklmnopqrstuvwxyz".toCharArray();
     private static final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
     private static final Object lock = new Object();
@@ -79,16 +79,22 @@ public class PasswordRunnable extends Thread {
                     synchronized (lock) {
                         String generated;
                         generated = Generate();
-                        System.out.println(generated);
                         if (check(hashPassword(generated))) {
-                                System.out.println("Пароль:" + generated);
                                 isComplete = false;
+                            try {
+                                sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println(generated);
                         }
                     }
                 }
-                else break;
+                else currentThread().interrupt();
                 n--;
             }
+            currentThread().interrupt();
+            System.out.println("By");
         }
     }
 
