@@ -1,0 +1,247 @@
+match
+match_id 1639523486920_ay
+match_time 1639523486923
+num_bots 1
+##MatchConfig
+mode FRIENDLY
+num_rounds 200
+random_seed 42
+move_time_limit 1000
+coin_spawn_period 5
+coin_spawn_volume 2
+##MapConfig
+map_size 49 20
+view_radius 5
+mining_radius 2
+attack_radius 3
+block 33 4
+block 34 4
+block 35 4
+block 36 4
+block 40 4
+block 41 4
+block 42 4
+block 43 4
+block 9 5
+block 10 5
+block 11 5
+block 12 5
+block 13 5
+block 33 5
+block 34 5
+block 35 5
+block 36 5
+block 40 5
+block 41 5
+block 42 5
+block 43 5
+block 9 6
+block 10 6
+block 11 6
+block 12 6
+block 13 6
+block 40 6
+block 41 6
+block 42 6
+block 43 6
+block 44 6
+block 6 7
+block 7 7
+block 8 7
+block 9 7
+block 10 7
+block 11 7
+block 12 7
+block 40 7
+block 41 7
+block 42 7
+block 43 7
+block 44 7
+block 45 7
+block 46 7
+block 6 8
+block 7 8
+block 8 8
+block 9 8
+block 10 8
+block 11 8
+block 12 8
+block 40 8
+block 41 8
+block 42 8
+block 43 8
+block 44 8
+block 45 8
+block 46 8
+block 6 9
+block 7 9
+block 8 9
+block 9 9
+block 10 9
+block 11 9
+block 12 9
+block 40 9
+block 41 9
+block 42 9
+block 43 9
+block 44 9
+block 45 9
+block 46 9
+block 6 10
+block 7 10
+block 8 10
+block 9 10
+block 10 10
+block 11 10
+block 12 10
+block 40 10
+block 41 10
+block 42 10
+block 43 10
+block 44 10
+block 45 10
+block 46 10
+block 6 11
+block 7 11
+block 8 11
+block 9 11
+block 10 11
+block 16 11
+block 17 11
+block 18 11
+block 19 11
+block 20 11
+block 21 11
+block 22 11
+block 4 12
+block 5 12
+block 6 12
+block 7 12
+block 8 12
+block 9 12
+block 10 12
+block 16 12
+block 17 12
+block 18 12
+block 19 12
+block 20 12
+block 21 12
+block 22 12
+block 33 12
+block 34 12
+block 35 12
+block 36 12
+block 37 12
+block 4 13
+block 5 13
+block 6 13
+block 7 13
+block 8 13
+block 9 13
+block 10 13
+block 33 13
+block 34 13
+block 35 13
+block 36 13
+block 37 13
+block 4 14
+block 5 14
+block 6 14
+block 7 14
+block 8 14
+block 9 14
+block 41 16
+block 42 16
+block 43 16
+block 44 16
+block 45 16
+block 41 17
+block 42 17
+block 43 17
+block 44 17
+block 45 17
+##BotsAndCoinsInfo
+bot_name 0 theBest
+bot 0 30 8
+bot_coins 0 0
+coin 29 3
+coin 19 16
+round 1
+bot 0 30 9
+round 2
+bot 0 30 10
+round 3
+bot 0 30 11
+round 4
+bot 0 30 12
+round 5
+bot 0 30 13
+coin 34 3
+coin 14 16
+round 6
+bot 0 30 14
+round 7
+bot 0 30 15
+round 8
+bot 0 30 16
+round 9
+bot 0 30 17
+round 10
+bot 0 30 18
+coin 19 5
+coin 29 14
+round 11
+bot 0 30 19
+round 12
+bot 0 31 19
+round 13
+bot 0 32 19
+round 14
+bot 0 33 19
+round 15
+bot 0 34 19
+coin 1 18
+coin 47 1
+round 16
+bot 0 35 19
+round 17
+bot 0 36 19
+round 18
+bot 0 37 19
+round 19
+bot 0 38 19
+round 20
+bot 0 39 19
+coin 48 13
+coin 0 6
+round 21
+bot 0 40 19
+round 22
+bot 0 41 19
+round 23
+bot 0 42 19
+round 24
+bot 0 43 19
+round 25
+bot 0 44 19
+coin 3 2
+coin 45 18
+round 26
+bot 0 45 19
+coin_collected 45 18 0
+bot_coins 0 1
+round 27
+bot 0 46 19
+round 28
+bot 0 47 19
+coin_collected 47 1 0
+bot_coins 0 2
+round 29
+bot 0 48 19
+round 30
+coin 28 12
+coin 20 7
+round 31
+round 32
+match_over 0
+round 33

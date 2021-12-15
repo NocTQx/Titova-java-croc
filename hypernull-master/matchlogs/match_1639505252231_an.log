@@ -1,0 +1,155 @@
+match
+match_id 1639505252231_an
+match_time 1639505252238
+num_bots 1
+##MatchConfig
+mode FRIENDLY
+num_rounds 200
+random_seed 42
+move_time_limit 1000
+coin_spawn_period 5
+coin_spawn_volume 2
+##MapConfig
+map_size 61 22
+view_radius 5
+mining_radius 2
+attack_radius 3
+block 39 3
+block 40 3
+block 41 3
+block 42 3
+block 43 3
+block 44 3
+block 39 4
+block 40 4
+block 41 4
+block 42 4
+block 43 4
+block 44 4
+block 13 8
+block 14 8
+block 43 8
+block 44 8
+block 45 8
+block 46 8
+block 47 8
+block 48 8
+block 49 8
+block 13 9
+block 14 9
+block 43 9
+block 44 9
+block 45 9
+block 46 9
+block 47 9
+block 48 9
+block 49 9
+block 13 10
+block 14 10
+block 43 10
+block 44 10
+block 45 10
+block 46 10
+block 47 10
+block 48 10
+block 49 10
+block 51 10
+block 52 10
+block 53 10
+block 54 10
+block 55 10
+block 56 10
+block 13 11
+block 14 11
+block 43 11
+block 44 11
+block 45 11
+block 46 11
+block 47 11
+block 48 11
+block 49 11
+block 51 11
+block 52 11
+block 53 11
+block 54 11
+block 55 11
+block 56 11
+block 13 12
+block 14 12
+block 43 12
+block 44 12
+block 45 12
+block 46 12
+block 47 12
+block 48 12
+block 49 12
+block 51 12
+block 52 12
+block 53 12
+block 54 12
+block 55 12
+block 56 12
+block 13 13
+block 14 13
+block 43 13
+block 44 13
+block 45 13
+block 46 13
+block 47 13
+block 48 13
+block 49 13
+block 51 13
+block 52 13
+block 53 13
+block 54 13
+block 55 13
+block 56 13
+block 13 14
+block 14 14
+block 49 14
+block 50 14
+block 51 14
+block 52 14
+block 53 14
+block 54 14
+block 55 14
+block 56 14
+block 49 15
+block 50 15
+block 51 15
+block 52 15
+block 53 15
+block 54 15
+block 55 15
+block 56 15
+block 49 16
+block 50 16
+block 51 16
+block 52 16
+block 49 17
+block 50 17
+block 51 17
+block 52 17
+block 49 18
+block 50 18
+block 51 18
+block 52 18
+block 49 19
+block 50 19
+block 51 19
+block 52 19
+block 49 20
+block 50 20
+block 51 20
+block 52 20
+##BotsAndCoinsInfo
+bot_name 0 theBest
+bot 0 41 13
+bot_coins 0 0
+coin 5 15
+coin 55 6
+round 1
+round 2
+round 3
+match_over 0
+round 4
